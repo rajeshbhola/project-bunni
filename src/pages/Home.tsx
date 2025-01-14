@@ -23,54 +23,7 @@ export default function Home() {
       </section>
 
       <div className="flex gap-8">
-        <aside className="w-64 shrink-0">
-          <div className="bg-white p-6 rounded-lg shadow-sm">
-            <div className="flex items-center justify-between mb-4">
-              <h2 className="text-lg font-semibold">Filters</h2>
-              <Filter size={20} />
-            </div>
-            
-            <div className="space-y-6">
-              <div>
-                <h3 className="font-medium mb-2">Categories</h3>
-                <div className="space-y-2">
-                  {['Electronics', 'Clothing', 'Books', 'Home & Garden'].map((category) => (
-                    <label key={category} className="flex items-center">
-                      <input type="checkbox" className="rounded text-blue-600" />
-                      <span className="ml-2 text-sm">{category}</span>
-                    </label>
-                  ))}
-                </div>
-              </div>
-
-              <div>
-                <h3 className="font-medium mb-2">Price Range</h3>
-                <input
-                  type="range"
-                  min="0"
-                  max="1000"
-                  className="w-full"
-                />
-                <div className="flex justify-between text-sm text-gray-600">
-                  <span>$0</span>
-                  <span>$1000</span>
-                </div>
-              </div>
-
-              <div>
-                <h3 className="font-medium mb-2">Rating</h3>
-                <div className="space-y-2">
-                  {[4, 3, 2, 1].map((rating) => (
-                    <label key={rating} className="flex items-center">
-                      <input type="checkbox" className="rounded text-blue-600" />
-                      <span className="ml-2 text-sm">{rating}+ Stars</span>
-                    </label>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </aside>
+        
 
         <div className="flex-1">
           <div className="flex justify-between items-center mb-6">

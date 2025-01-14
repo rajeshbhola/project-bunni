@@ -10,7 +10,7 @@ export default function Footer() {
           <div>
             <h3 className="font-bold text-lg mb-4">About Us</h3>
             <ul className="space-y-2">
-              <li><Link to="/about" className="text-gray-600 hover:text-blue-600">About ShopHub</Link></li>
+              <li><Link to="/about" className="text-gray-600 hover:text-blue-600">About bunnii</Link></li>
               <li><Link to="/careers" className="text-gray-600 hover:text-blue-600">Careers</Link></li>
               <li><Link to="/press" className="text-gray-600 hover:text-blue-600">Press Center</Link></li>
             </ul>
@@ -45,15 +45,13 @@ export default function Footer() {
               <a href="#" className="text-gray-600 hover:text-blue-600">
                 <Instagram size={24} />
               </a>
-              <a href="#" className="text-gray-600 hover:text-blue-600">
-                <Youtube size={24} />
-              </a>
+             
             </div>
           </div>
         </div>
 
         <div className="border-t mt-8 pt-8 text-center text-gray-600">
-          <p>&copy; {new Date().getFullYear()} ShopHub. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} bunnii. All rights reserved.</p>
         </div>
       </div>
     </footer>
