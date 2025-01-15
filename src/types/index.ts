@@ -30,3 +30,31 @@ export interface User {
   name: string;
   wishlist: string[];
 }
+
+
+export interface Order {
+  id: string;
+  date: string;
+  status: 'processing' | 'shipped' | 'delivered';
+  items: {
+    id: string;
+    name: string;
+    price: number;
+    quantity: number;
+    image: string;
+  }[];
+  shipping: {
+    fullName: string;
+    phone: string;
+    address: string;
+    city: string;
+    state: string;
+    pincode: string;
+  };
+  payment: {
+    cardNumber: string;
+    cardHolder: string;
+  };
+  subtotal: number;
+  total: number;
+}

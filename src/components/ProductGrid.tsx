@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Heart, Star } from 'lucide-react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '../store/slices/cartSlice';
+import { addToWishlist, removeFromWishlist } from '../store/slices/wishlistSlice';
+import { RootState } from '../store/store';
 import { toast } from 'sonner';
 
 export const SAMPLE_PRODUCTS = [
@@ -73,13 +75,39 @@ export const SAMPLE_PRODUCTS = [
     stock: 12
   }
 ];
+interface Product {
+  id: string;
+  name: string;
+  price: number;
+  image: string;
+  rating: number;
+  category: string;
+  description: string;
+  stock: number;
+}
+interface ProductGridProps {
 
-export default function ProductGrid() {
+  sortBy: string;
+
+}
+export default function ProductGrid({ sortBy }: ProductGridProps) {
   const dispatch = useDispatch();
+  const wishlistItems = useSelector((state: RootState) => state.wishlist.items);
 
   const handleAddToCart = (product: any) => {
     dispatch(addToCart({ product, quantity: 1 }));
     toast.success('Added to cart');
+  };
+
+  const handleWishlistToggle = (product: any) => {
+    const isWishlisted = wishlistItems.some(item => item.id === product.id);
+    if (isWishlisted) {
+      dispatch(removeFromWishlist(product.id));
+      toast.success('Removed from wishlist');
+    } else {
+      dispatch(addToWishlist(product));
+      toast.success('Added to wishlist');
+    }
   };
 
   return (
@@ -95,9 +123,17 @@ export default function ProductGrid() {
               />
             </Link>
             <button
+              onClick={() => handleWishlistToggle(product)}
               className="absolute top-4 right-4 p-2 rounded-full bg-white/80 hover:bg-white transition-colors"
             >
-              <Heart className="text-gray-600 hover:text-red-500" size={20} />
+              <Heart 
+                className={`${
+                  wishlistItems.some(item => item.id === product.id)
+                    ? 'text-red-500 fill-red-500'
+                    : 'text-gray-600'
+                } hover:text-red-500`} 
+                size={20} 
+              />
             </button>
           </div>
           
